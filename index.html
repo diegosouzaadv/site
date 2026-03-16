@@ -61,18 +61,43 @@
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 15px;
     }
 
     .logo-area img {
-      height: 48px;
+      height: 65px; /* Aumentada */
       width: auto;
-      filter: drop-shadow(0 2px 6px #00000060);
+      border-radius: 18px; /* Bordas arredondadas */
+      filter: drop-shadow(0 4px 8px #00000080);
       transition: transform 0.2s;
+      border: 1px solid #4a4a4a;
     }
 
     .logo-area img:hover {
       transform: scale(1.02);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .logo-text .nome {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #e0e0e0, #9a9a9a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      letter-spacing: 0.5px;
+    }
+
+    .logo-text .subtitulo {
+      font-size: 0.9rem;
+      color: #a0a0a0;
+      font-weight: 400;
+      letter-spacing: 1px;
     }
 
     .nav-menu {
@@ -119,7 +144,7 @@
 
     /* ===== SEÇÕES ===== */
     section {
-      scroll-margin-top: 90px;
+      scroll-margin-top: 100px;
       padding: 5rem 2rem;
     }
 
@@ -136,7 +161,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding-top: 120px;
+      padding-top: 130px;
       background: radial-gradient(ellipse at 70% 40%, #2b2b2b, #050505);
     }
 
@@ -394,6 +419,18 @@
         padding: 0.6rem 1.5rem;
       }
 
+      .logo-area img {
+        height: 55px; /* Mantém proporcional em mobile */
+      }
+
+      .logo-text .nome {
+        font-size: 1.2rem;
+      }
+
+      .logo-text .subtitulo {
+        font-size: 0.75rem;
+      }
+
       .menu-toggle {
         display: block;
         order: 1;
@@ -449,7 +486,7 @@
         padding: 3rem 1rem;
       }
       .logo-area img {
-        height: 36px;
+        height: 48px;
       }
       .card-item {
         max-width: 100%;
@@ -464,8 +501,12 @@
 <body>
   <header>
     <div class="logo-area">
-      <img src="logo.png" alt="Logo Diego Advocacia" onerror="this.src='https://via.placeholder.com/180x60/222222/888888?text=LOGO'">
-      <span style="font-weight: 300; color: #7a7a7a; letter-spacing: 2px;">DIEGO</span>
+      <!-- Logo aumentada e com bordas arredondadas -->
+      <img src="logo.png" alt="Logo Diego Souza Advocacia" onerror="this.src='https://via.placeholder.com/180x65/222222/888888?text=LOGO'">
+      <div class="logo-text">
+        <span class="nome">DIEGO SOUZA</span>
+        <span class="subtitulo">Sociedade de Advocacia</span>
+      </div>
     </div>
     
     <div class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
@@ -483,11 +524,11 @@
   <section class="hero" id="inicio">
     <div class="container hero-content">
       <div class="hero-text">
-        <h1>Diego<br>Advocacia Trabalhista</h1>
+        <h1>Diego Souza<br>Advocacia Trabalhista</h1>
         <p>+16 anos dedicados à justiça trabalhista<br> > Equilíbrio e segurança para pessoas e empresas</p>
       </div>
       <div class="hero-img">
-        <img src="Diego.png" alt="Dr. Diego" onerror="this.src='https://via.placeholder.com/340x380/2d2d2d/999999?text=DIEGO+FOTO'">
+        <img src="Diego.png" alt="Dr. Diego Souza" onerror="this.src='https://via.placeholder.com/340x380/2d2d2d/999999?text=DIEGO+FOTO'">
       </div>
     </div>
   </section>
@@ -495,7 +536,7 @@
   <!-- SEÇÃO SOBRE (com biografia completa) -->
   <section class="sobre" id="sobre">
     <div class="container card-glass" style="padding: 3rem 2rem;">
-      <h2><i class="fas fa-user-shield" style="margin-right: 12px;"></i> Sobre Diego</h2>
+      <h2><i class="fas fa-user-shield" style="margin-right: 12px;"></i> Sobre Diego Souza</h2>
       
       <p>Com mais de 16 anos de atuação na advocacia trabalhista, dedico minha carreira à defesa dos direitos nas relações de trabalho, buscando sempre promover justiça, equilíbrio e segurança jurídica para trabalhadores e empresas.</p>
 
@@ -542,14 +583,14 @@
     </div>
   </section>
 
-  <!-- SEÇÃO CONTATO (endereço e telefone atualizados) -->
+  <!-- SEÇÃO CONTATO -->
   <section class="contato" id="contato">
     <div class="container contato-wrapper">
       <div class="info-contato">
         <h2 style="border-bottom: none; font-size: 2.4rem;">Contato</h2>
-        <p><i class="fas fa-map-marker-alt fa-fw"></i>  Rua Negão, 2424 - Curitiba/PR</p>
-        <p><i class="fas fa-phone-alt fa-fw"></i>  (41) 96830-132</p>
-        <p><i class="fas fa-envelope fa-fw"></i>  diego@advocacia.adv.br</p>
+        <p><i class="fas fa-map-marker-alt fa-fw"></i>  Rua do Negão, 2424 - Curitiba/PR</p>
+        <p><i class="fas fa-phone-alt fa-fw"></i>  (41) 996830132</p>
+        <p><i class="fas fa-envelope fa-fw"></i>  diego@diego.adv.br</p>
         <p><i class="fas fa-clock fa-fw"></i>  Seg a Sex, 9h às 19h</p>
         <div style="margin: 2rem 0; height: 4px; width: 120px; background: linear-gradient(90deg, #5f5f5f, #2f2f2f); border-radius: 4px;"></div>
         <p style="font-style: italic; color:#9e9e9e;">"Ética, técnica e humanidade na defesa dos seus direitos."</p>
@@ -562,7 +603,7 @@
       <div class="form-contato">
         <input type="text" placeholder="Nome completo" value="">
         <input type="email" placeholder="E-mail corporativo" value="">
-        <input type="tel" placeholder="(41) 96830-132" value="">
+        <input type="tel" placeholder="(41) 99683-0132" value="">
         <textarea placeholder="Descreva brevemente sua necessidade..."></textarea>
         <button class="btn-enviar"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Enviar mensagem</button>
       </div>
@@ -570,8 +611,8 @@
   </section>
 
   <footer>
-    <p>© 2026 Diego Advocacia Trabalhista. Todos os direitos reservados.</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">16 anos de atuação · PUC/PR · EMATRA</p>
+    <p>© 2026 Diego Souza - Sociedade de Advocacia. Todos os direitos reservados.</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">OAB - Numero da OAB do Negao</p>
   </footer>
 
   <!-- JavaScript para menu mobile -->
