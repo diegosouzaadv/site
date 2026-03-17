@@ -65,12 +65,12 @@
     }
 
     .logo-area img {
-      height: 45px; /* Tamanho pequeno */
+      height: 45px;
       width: auto;
       border-radius: 12px;
       filter: drop-shadow(0 2px 4px #00000060);
       transition: transform 0.2s;
-      background: #0a0a0a; /* Mesmo fundo da página */
+      background: #0a0a0a;
       padding: 4px;
       border: 1px solid #3a3a3a;
     }
@@ -156,7 +156,7 @@
       width: 100%;
     }
 
-    /* HERO */
+    /* HERO - COM SOBREPOSIÇÃO DE IMAGENS E GRADIENTES */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -165,6 +165,19 @@
       text-align: center;
       padding-top: 100px;
       background: radial-gradient(ellipse at 70% 40%, #2b2b2b, #050505);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at 20% 50%, rgba(100,100,100,0.1) 0%, transparent 50%);
+      pointer-events: none;
     }
 
     .hero-content {
@@ -173,6 +186,8 @@
       align-items: center;
       justify-content: center;
       gap: 3rem;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-text {
@@ -197,8 +212,9 @@
       padding-left: 1.5rem;
     }
 
+    /* CONTAINER DA FOTO E LOGO COM SOBREPOSIÇÃO */
     .hero-img {
-      flex: 0 0 320px;
+      flex: 0 0 380px;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -206,18 +222,85 @@
       gap: 20px;
     }
 
-    .hero-img .foto-advogado {
+    /* Container para sobreposição de imagens */
+    .image-overlay-container {
+      position: relative;
       width: 100%;
-      max-width: 340px;
+      max-width: 380px;
       border-radius: 40px 12px 40px 12px;
+      overflow: hidden;
       box-shadow: 0 30px 40px -10px black, 0 0 0 2px #3f3f3f inset;
-      transition: 0.4s ease;
-      filter: grayscale(20%);
     }
 
-    .hero-img .foto-advogado:hover {
-      transform: scale(1.01);
-      box-shadow: 0 40px 50px -8px #222;
+    /* Foto do advogado (base) */
+    .foto-advogado {
+      width: 100%;
+      height: auto;
+      display: block;
+      filter: grayscale(30%);
+      transition: transform 0.4s ease;
+    }
+
+    .image-overlay-container:hover .foto-advogado {
+      transform: scale(1.02);
+    }
+
+    /* Camada de gradiente sobre a foto */
+    .gradient-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(10,10,10,0.7) 0%, rgba(30,30,30,0.4) 50%, rgba(80,80,80,0.2) 100%);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* Camada da logo - OCUPANDO TODO O CONTAINER */
+    .logo-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 3;
+      background: linear-gradient(145deg, rgba(0,0,0,0.3) 0%, rgba(50,50,50,0.2) 100%);
+      mix-blend-mode: screen;
+    }
+
+    .logo-overlay img {
+      width: 70%;
+      height: auto;
+      max-width: 250px;
+      filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)) brightness(1.2);
+      opacity: 0.9;
+      transition: all 0.3s ease;
+      border-radius: 20px;
+      background: transparent;
+    }
+
+    .image-overlay-container:hover .logo-overlay img {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 30px rgba(255,255,255,0.5)) brightness(1.3);
+      opacity: 1;
+    }
+
+    /* Segundo gradiente radial para efeito adicional */
+    .radial-glow {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 30% 40%, rgba(150,150,150,0.2) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 4;
+      mix-blend-mode: soft-light;
     }
 
     /* SOBRE */
@@ -508,10 +591,8 @@
 
       .hero-img {
         flex: 0 0 auto;
-      }
-
-      .hero-img .foto-advogado {
-        max-width: 260px;
+        width: 100%;
+        max-width: 380px;
       }
     }
 
@@ -526,13 +607,16 @@
         width: 100%;
         font-size: 1.2rem;
       }
+      .logo-overlay img {
+        width: 80%;
+      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-area">
-      <!-- Logo pequena no canto esquerdo com fundo da página -->
+      <!-- Logo pequena no canto esquerdo -->
       <img src="logo.png" alt="Logo Diego Souza Advocacia" onerror="this.src='https://via.placeholder.com/120x45/0a0a0a/888888?text=LOGO'">
       <div class="logo-text">
         <span class="nome">DIEGO SOUZA</span>
@@ -551,16 +635,31 @@
     </nav>
   </header>
 
-  <!-- HERO com foto Diego.png -->
+  <!-- HERO COM SOBREPOSIÇÃO DE IMAGENS E GRADIENTES -->
   <section class="hero" id="inicio">
     <div class="container hero-content">
       <div class="hero-text">
         <h1>Diego Souza<br>Advocacia Trabalhista</h1>
         <p>+16 anos dedicados à justiça trabalhista<br> > Equilíbrio e segurança para pessoas e empresas</p>
       </div>
+      
+      <!-- CONTAINER DA FOTO COM SOBREPOSIÇÕES -->
       <div class="hero-img">
-        <!-- Foto do advogado -->
-        <img src="Diego.png" alt="Dr. Diego Souza" class="foto-advogado" onerror="this.src='https://via.placeholder.com/340x380/2d2d2d/999999?text=DIEGO+FOTO'">
+        <div class="image-overlay-container">
+          <!-- Foto base do advogado -->
+          <img src="Diego.png" alt="Dr. Diego Souza" class="foto-advogado" onerror="this.src='https://via.placeholder.com/380x420/2d2d2d/999999?text=DIEGO+FOTO'">
+          
+          <!-- Camada de gradiente sobre a foto -->
+          <div class="gradient-overlay"></div>
+          
+          <!-- LOGO OCUPANDO TODO O CONTAINER COM SOBREPOSIÇÃO -->
+          <div class="logo-overlay">
+            <img src="logo.png" alt="Logo Diego Advocacia" onerror="this.src='https://via.placeholder.com/250x120/222222/cccccc?text=DIEGO+ADV'">
+          </div>
+          
+          <!-- Brilho radial adicional -->
+          <div class="radial-glow"></div>
+        </div>
       </div>
     </div>
   </section>
@@ -620,8 +719,8 @@
     <div class="container contato-wrapper">
       <div class="info-contato">
         <h2 style="border-bottom: none; font-size: 2.4rem;">Contato</h2>
-        <p><i class="fas fa-map-marker-alt fa-fw"></i>  Rua Negão, 2424 - Curitiba/PR</p>
-        <p><i class="fas fa-phone-alt fa-fw"></i>  (41) 96830-132</p>
+        <p><i class="fas fa-map-marker-alt fa-fw"></i>  Rua do Negão, 2424 - Curitiba/PR</p>
+        <p><i class="fas fa-phone-alt fa-fw"></i>  (41) 96830-0132</p>
         <p><i class="fas fa-envelope fa-fw"></i>  diegosouza3@hotmail.com</p>
         <p><i class="fas fa-clock fa-fw"></i>  Seg a Sex, 9h às 19h</p>
         <div style="margin: 2rem 0; height: 4px; width: 120px; background: linear-gradient(90deg, #5f5f5f, #2f2f2f); border-radius: 4px;"></div>
@@ -652,7 +751,7 @@
       </a>
     </div>
     <p>© 2026 Diego Souza - Sociedade de Advocacia. Todos os direitos reservados.</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">16 anos de atuação · PUC/PR · EMATRA</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">OAB - Numero da OAB do Negao</p>
   </footer>
 
   <!-- JavaScript para menu mobile -->
