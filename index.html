@@ -45,7 +45,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      padding: 0.8rem 2rem;
+      padding: 0.6rem 2rem;
       background: rgba(10, 10, 10, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
@@ -61,7 +61,22 @@
     .logo-area {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 12px;
+    }
+
+    .logo-area img {
+      height: 45px; /* Tamanho pequeno */
+      width: auto;
+      border-radius: 12px;
+      filter: drop-shadow(0 2px 4px #00000060);
+      transition: transform 0.2s;
+      background: #0a0a0a; /* Mesmo fundo da página */
+      padding: 4px;
+      border: 1px solid #3a3a3a;
+    }
+
+    .logo-area img:hover {
+      transform: scale(1.02);
     }
 
     .logo-text {
@@ -71,7 +86,7 @@
     }
 
     .logo-text .nome {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       font-weight: 700;
       background: linear-gradient(135deg, #e0e0e0, #9a9a9a);
       -webkit-background-clip: text;
@@ -81,7 +96,7 @@
     }
 
     .logo-text .subtitulo {
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       color: #a0a0a0;
       font-weight: 400;
       letter-spacing: 1px;
@@ -131,7 +146,7 @@
 
     /* ===== SEÇÕES ===== */
     section {
-      scroll-margin-top: 100px;
+      scroll-margin-top: 80px;
       padding: 5rem 2rem;
     }
 
@@ -148,7 +163,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding-top: 130px;
+      padding-top: 100px;
       background: radial-gradient(ellipse at 70% 40%, #2b2b2b, #050505);
     }
 
@@ -203,35 +218,6 @@
     .hero-img .foto-advogado:hover {
       transform: scale(1.01);
       box-shadow: 0 40px 50px -8px #222;
-    }
-
-    /* Logo animada com reflexos */
-    .logo-destaque {
-      width: 180px;
-      height: auto;
-      border-radius: 30px 10px 30px 10px;
-      box-shadow: 0 20px 30px -10px #000,
-                  0 0 0 1px #4a4a4a inset,
-                  0 0 20px rgba(255,255,255,0.2);
-      animation: reflexoSuave 4s infinite ease-in-out;
-      filter: drop-shadow(0 0 5px rgba(200,200,200,0.3));
-      transition: transform 0.3s;
-      background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-      padding: 5px;
-    }
-
-    .logo-destaque:hover {
-      transform: scale(1.03);
-      animation: none;
-      box-shadow: 0 20px 30px -8px #000, 0 0 0 2px #6a6a6a inset, 0 0 25px #aaa;
-    }
-
-    @keyframes reflexoSuave {
-      0% { box-shadow: 0 20px 30px -10px #000, 0 0 0 1px #4a4a4a inset, 0 0 5px rgba(255,255,255,0.1); }
-      25% { box-shadow: 0 20px 30px -8px #222, 0 0 0 1px #6a6a6a inset, 0 0 15px rgba(220,220,220,0.4); }
-      50% { box-shadow: 0 25px 35px -8px #111, 0 0 0 1px #8a8a8a inset, 0 0 25px rgba(240,240,240,0.6); }
-      75% { box-shadow: 0 20px 30px -8px #222, 0 0 0 1px #6a6a6a inset, 0 0 15px rgba(220,220,220,0.4); }
-      100% { box-shadow: 0 20px 30px -10px #000, 0 0 0 1px #4a4a4a inset, 0 0 5px rgba(255,255,255,0.1); }
     }
 
     /* SOBRE */
@@ -463,12 +449,16 @@
         padding: 0.6rem 1.5rem;
       }
 
+      .logo-area img {
+        height: 40px;
+      }
+
       .logo-text .nome {
-        font-size: 1.2rem;
+        font-size: 1.1rem;
       }
 
       .logo-text .subtitulo {
-        font-size: 0.75rem;
+        font-size: 0.7rem;
       }
 
       .menu-toggle {
@@ -523,10 +513,6 @@
       .hero-img .foto-advogado {
         max-width: 260px;
       }
-
-      .logo-destaque {
-        width: 150px;
-      }
     }
 
     @media screen and (max-width: 480px) {
@@ -540,15 +526,14 @@
         width: 100%;
         font-size: 1.2rem;
       }
-      .logo-destaque {
-        width: 130px;
-      }
     }
   </style>
 </head>
 <body>
   <header>
     <div class="logo-area">
+      <!-- Logo pequena no canto esquerdo com fundo da página -->
+      <img src="logo.png" alt="Logo Diego Souza Advocacia" onerror="this.src='https://via.placeholder.com/120x45/0a0a0a/888888?text=LOGO'">
       <div class="logo-text">
         <span class="nome">DIEGO SOUZA</span>
         <span class="subtitulo">Sociedade de Advocacia</span>
@@ -566,7 +551,7 @@
     </nav>
   </header>
 
-  <!-- HERO com foto Diego.png e LOGO DENTRO DO MESMO CONTAINER -->
+  <!-- HERO com foto Diego.png -->
   <section class="hero" id="inicio">
     <div class="container hero-content">
       <div class="hero-text">
@@ -576,9 +561,6 @@
       <div class="hero-img">
         <!-- Foto do advogado -->
         <img src="Diego.png" alt="Dr. Diego Souza" class="foto-advogado" onerror="this.src='https://via.placeholder.com/340x380/2d2d2d/999999?text=DIEGO+FOTO'">
-        
-        <!-- LOGO animada com reflexos -->
-        <img src="logo.png" alt="Logo Diego Advocacia" class="logo-destaque" onerror="this.src='https://via.placeholder.com/180x80/222222/888888?text=ADVOCACIA'">
       </div>
     </div>
   </section>
@@ -655,7 +637,7 @@
       <form class="form-contato" action="mailto:diegosouza3@hotmail.com" method="post" enctype="text/plain">
         <input type="text" name="Nome" placeholder="Nome completo" required>
         <input type="email" name="Email" placeholder="Seu melhor e-mail" required>
-        <input type="tel" name="Telefone" placeholder="Seu melhor telefone">
+        <input type="tel" name="Telefone" placeholder="(41) 96830-132">
         <textarea name="Mensagem" placeholder="Descreva brevemente sua necessidade..." required></textarea>
         <button type="submit" class="btn-enviar"><i class="fas fa-paper-plane" style="margin-right: 8px;"></i> Enviar mensagem</button>
       </form>
@@ -670,7 +652,7 @@
       </a>
     </div>
     <p>© 2026 Diego Souza - Sociedade de Advocacia. Todos os direitos reservados.</p>
-    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">OAB - Numero da OAB do Negao</p>
+    <p style="margin-top: 1rem; font-size: 0.9rem; color:#4a4a4a;">16 anos de atuação · PUC/PR · EMATRA</p>
   </footer>
 
   <!-- JavaScript para menu mobile -->
